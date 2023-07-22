@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,11 +35,35 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingImage(message = stringResource(R.string.happy_birthday_puttan), from = stringResource(
-                        R.string.from_pratik))              }
+                    TaskManage(
+                        title1 = stringResource(id = R.string.all_task_completed), title2 = stringResource(
+                            id = R.string.nice_work
+                        )
+                    )
+//                    GreetingImage(message = stringResource(R.string.happy_birthday_puttan), from = stringResource(
+//                        R.string.from_pratik))              }
             }
         }
     }
+}
+
+@Composable
+fun TaskManage(title1: String, title2:String, modifier: Modifier = Modifier){
+
+     Column(verticalArrangement = Arrangement.Center,
+         modifier = modifier) {
+
+         Image(painter = painterResource(id = R.drawable.ic_task_completed),
+             contentDescription = null,
+             Modifier.align(Alignment.CenterHorizontally))
+
+         Text(text = title1, Modifier.align(Alignment.CenterHorizontally)
+             .padding(0.dp, 24.dp, 0.dp, 8.dp),
+         fontWeight = FontWeight.Bold)
+
+         Text(text = title2,  Modifier.align(Alignment.CenterHorizontally), fontSize = 16.sp)
+
+     }
 }
 
 @Composable
@@ -58,7 +83,8 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
       Text(text = from,
           fontSize = 36.sp,
           modifier = Modifier
-              .padding(16.dp).align(Alignment.CenterHorizontally)
+              .padding(16.dp)
+              .align(Alignment.CenterHorizontally)
       )
   }
 
@@ -77,17 +103,26 @@ fun GreetingImage(message: String,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             alpha = 0.5f)
-        GreetingText(message = message, from = from,  modifier.fillMaxSize().padding(8.dp))
+        GreetingText(message = message, from = from,
+            modifier
+                .fillMaxSize()
+                .padding(8.dp))
     }
 
 }
 
-@Preview(showBackground = false)
+@Preview(showBackground = true)
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        GreetingImage(message = stringResource(R.string.happy_birthday_puttan), from = stringResource(
-                    R.string.from_pratik)
-                )
+        TaskManage(
+            title1 = stringResource(id = R.string.all_task_completed), title2 = stringResource(
+                id = R.string.nice_work
+            )
+        )
+//        GreetingImage(message = stringResource(R.string.happy_birthday_puttan), from = stringResource(
+//                    R.string.from_pratik)
+//                )
     }
+}
 }

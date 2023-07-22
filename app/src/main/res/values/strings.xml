@@ -2,4 +2,8 @@
     <string name="app_name">BirthdayApp</string>
     <string name="happy_birthday_puttan">Happy Birthday Puttan!</string>
     <string name="from_pratik">from pratik</string>
+
+    <string name="all_task_completed">All tasks completed</string>
+    <string name="nice_work">Nice Work</string>
+
 </resources>
